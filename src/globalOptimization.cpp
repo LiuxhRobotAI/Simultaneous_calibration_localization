@@ -37,7 +37,7 @@ void GlobalOptimization::inputOdom(double t, Eigen::Vector3d OdomP, Eigen::Quate
 
     geometry_msgs::PoseStamped pose_stamped;
     pose_stamped.header.stamp = ros::Time(t);
-    pose_stamped.header.frame_id = "map"; // Use "map", not "world"
+    pose_stamped.header.frame_id = "map";
     pose_stamped.pose.position.x = lastP.x();
     pose_stamped.pose.position.y = lastP.y();
     pose_stamped.pose.position.z = lastP.z();
@@ -239,7 +239,7 @@ void GlobalOptimization::optimize()
                     }
                 }
 
-                // TODO : factor with ranging to estimat anchor position
+                // Factor with ranging to estimat anchor position
                 // int length = last_UWB_anchorsPs.cols(); // One anchor for one position only
                 // double p_array[length][3]; // UWB anchors' position variables to be estimated
                 // map<double, vector<double>>::iterator iterAnchor;
@@ -420,7 +420,7 @@ void GlobalOptimization::optimize()
             {
                 vector<double> globalPose{t_array[i][0], t_array[i][1], t_array[i][2],
                                           q_array[i][0], q_array[i][1], q_array[i][2], q_array[i][3]};
-                iter->second = globalPose; // save the solved global poses
+                iter->second = globalPose;
                 if(i == length - 1) // Get the final transformation from VIO to UWB
                 {
                     Eigen::Matrix4d WVIO_T_body = Eigen::Matrix4d::Identity();
@@ -477,8 +477,6 @@ void GlobalOptimization::optimize()
 
             // printf("UWB anchor globalAnchorMap size: %ld; UWBPositionMap size: %ld; localPoseMap size: %ld \n",
                     // globalAnchorMap.size(), UWBPositionMap.size(), localPoseMap.size());
-            // printf("UWB anchor optimization: %s(%d): \n" ,__FILE__, __LINE__);
-
             // printf("global time %f \n", globalOptimizationTime.toc());
             mPoseMap.unlock();
         }

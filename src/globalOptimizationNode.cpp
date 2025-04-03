@@ -289,22 +289,16 @@ void vio_callback(const nav_msgs::Odometry::ConstPtr &pose_msg)
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "globalEstimator"); // scal later updates in global_lidar
+    ros::init(argc, argv, "globalEstimator");
     ros::NodeHandle n("~");
 
     global_path = &globalEstimator.global_path;
 
     ros::Subscriber sub_UWB = n.subscribe("/uwb/localization/tag/hr_position", 100, UWB_callback); // /dwm1001/tag/tag/position
-    // for (int i = 0; i < 4; i++)
-    // {
-    //     string uwb_range_topic = "/dwm1001/tag/tag/to/anchor/AN"+to_string(i)+"/distance";
-    // }
-    // ros::Subscriber sub_UWBRange0 = n.subscribe("/dwm1001/tag/tag/to/anchor/AN0/distance", 100, boost::bind(&UWBrange_callback, _1, "AN0"));
     ros::Subscriber sub_UWBRange0 = n.subscribe("/dwm1001/tag/tag/to/anchor/AN0/distance", 100, UWBrange_callback);
     ros::Subscriber sub_UWBRange1 = n.subscribe("/dwm1001/tag/tag/to/anchor/AN1/distance", 100, UWBrange_callback);
     ros::Subscriber sub_UWBRange2 = n.subscribe("/dwm1001/tag/tag/to/anchor/AN2/distance", 100, UWBrange_callback);
     ros::Subscriber sub_UWBRange3 = n.subscribe("/dwm1001/tag/tag/to/anchor/AN3/distance", 100, UWBrange_callback);
-    // ros::Subscriber sub_vio = n.subscribe("/vins_estimator/odometry", 100, vio_callback);
     ros::Subscriber sub_vio = n.subscribe("/aft_mapped_to_init_high_frec", 100, vio_callback);
     pub_global_path = n.advertise<nav_msgs::Path>("uwb_global_path", 100);
     pub_global_odometry = n.advertise<nav_msgs::Odometry>("uwb_global_odometry", 100);

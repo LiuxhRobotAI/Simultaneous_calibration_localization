@@ -19,7 +19,6 @@ struct TError
                   :t_x(t_x), t_y(t_y), t_z(t_z), var(var){}
 
     template <typename T>
-    /* Overload () for members. */
     bool operator()(const T* tj, T* residuals) const
     {
         residuals[0] = (tj[0] - T(t_x)) / T(var);
@@ -110,10 +109,6 @@ struct DError
                   :t_x(t_x), t_y(t_y), t_z(t_z), distance(distance), var(var){}
 
     template <typename T>
-    /* Overload () for members.
-       tj: the (first) optimization variable array;
-       residuals: the output (difference).
-     */
     bool operator()(const T* tj, T* residuals) const
     {
         // residuals[0] = (tj[0] - T(t_x)) / T(var);
@@ -122,7 +117,6 @@ struct DError
         residuals[0] = (sqrt((tj[0] - T(t_x)) * (tj[0] - T(t_x)) +
                              (tj[1] - T(t_y)) * (tj[1] - T(t_y)) +
                              (tj[2] - T(t_z)) * (tj[2] - T(t_z))) - T(distance)) / T(var);
-        /* Must be manifold? Or may not converge. */
 
         return true;
     }
@@ -130,7 +124,6 @@ struct DError
     static ceres::CostFunction* Create(const double t_x, const double t_y, const double t_z,
                                        const double distance, const double var)
     {
-      /* input parameters x: {tj[0],tj[1],tj[2]}; not {tj[0],tj[1],tj[2], distance} */
       return (new ceres::AutoDiffCostFunction<DError, 1, 3> (new DError(t_x, t_y, t_z, distance, var)));
     }
 
@@ -143,7 +136,6 @@ struct PError
     PError(double var) : var(var){}
 
     template <typename T>
-    /* Overload () for members. */
     bool operator()(const T* tj, const T* tj1, T* residuals) const
     {
         residuals[0] = (tj[0] - tj1[0]) / T(var);
@@ -183,9 +175,6 @@ struct GlobalRtError
         t_l_i[0] = T(lt_x);
         t_l_i[1] = T(lt_y);
         t_l_i[2] = T(lt_z);
-
-        // T i_q_w[4];
-        // QuaternionInverse(w_q_i, i_q_w);
 
         T t_w_i_l[3];
         ceres::QuaternionRotatePoint(q_g_l, t_l_i, t_w_i_l);
