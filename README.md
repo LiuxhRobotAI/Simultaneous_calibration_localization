@@ -2,18 +2,14 @@
 ## Global calibration for UWB anchor positions with Lidar and UWB
 A factor graph-based implementation for UWB anchor global calibration with LiDAR providing local poses and robot localization with UWB, which provides global positions. The imformation fusion of the robot's local pose and the global position is also included to provide a robust robot global pose.
 
-The detailed results can be found in [our paper](https://arxiv.org/abs/2503.22272).
+The system framework inclues two factor graphs, one for global fusion, and one for UWB anchor calibration. The detailed results can be found in [our paper](https://arxiv.org/abs/2503.22272).
 
+<img src="./results/uwb distance factor graph_all.jpg" width = 50% height = 50% div align=left />
+<img src="./results/output.jpg" width = 47.5% height = 47.5% div align=center />
 
-<!-- The convergence results of the position estimation of anchors:
-
-<img src="./results/Estimated_coordinate.png" alt="Estimated-coordinate" width="600" height="350">
-
-
-The global pose estimation of the robot:
-
-<img src="./results/global_pose_result.png" alt="Global-path" width="600" height="350"> -->
-
+** **
+**More in [video](./results/video.gif).**
+<!-- [![Video](./results/output.jpg)](./results/video.gif) -->
 
 ## 1. Prerequisites
 ### 1.1 **Ubuntu** and **ROS**
@@ -55,3 +51,16 @@ You can also run with a ROS bag. The bag data should includes the UWB distance m
 ## 4. Acknowledgements
 Thanks for [VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion), the [updated VINS-Fusion](https://github.com/LiuxhRobotAI/VINS-Fusion), and [A-LOAM](https://github.com/HKUST-Aerial-Robotics/A-LOAM).
 For Licenses of the component codes, users are encouraged to read the material of these original projects.
+
+## 5. Related works
+
+We kindly recommend to cite [our paper](https://arxiv.org/abs/2503.22272) if you find this code is useful:
+
+```latex
+@article{liu2025robust,
+  title={Robust simultaneous UWB-anchor calibration and robot localization for emergency situations},
+  author={Liu, Xinghua and Cao, Ming},
+  journal={arXiv preprint arXiv:2503.22272},
+  year={2025}
+}
+```
