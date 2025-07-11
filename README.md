@@ -6,11 +6,10 @@ The system framework inclues two factor graphs, one for global fusion, and one f
 
 <!-- <img src="./results/uwb_distance_factor_graph_all.jpg" width = 50% height = 50% div align=left /> -->
 <!-- <img src="./results/output.jpg" width = 47.5% height = 47.5% div align=center /> -->
-<div style="display:flex; gap:10px;">
+<div style="display:flex; gap:0px;">
   <img src="./results/uwb_distance_factor_graph_all.jpg" style="height:300px;">
   <img src="./results/output.jpg" style="height:300px;">
 </div>
-
 <br><br>
 
 **More in [video](./results/video.gif).**
