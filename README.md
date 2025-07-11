@@ -4,8 +4,14 @@ A factor graph-based implementation for UWB anchor global calibration with LiDAR
 
 The system framework inclues two factor graphs, one for global fusion, and one for UWB anchor calibration. The detailed results can be found in [our paper](https://arxiv.org/abs/2503.22272).
 
-<img src="./results/uwb_distance_factor_graph_all.jpg" width = 50% height = 50% div align=left />
-<img src="./results/output.jpg" width = 47.5% height = 47.5% div align=center />
+<!-- <img src="./results/uwb_distance_factor_graph_all.jpg" width = 50% height = 50% div align=left /> -->
+<!-- <img src="./results/output.jpg" width = 47.5% height = 47.5% div align=center /> -->
+<div align="left" style="display:inline-block; width:47.5%;">
+  <img src="./results/uwb_distance_factor_graph_all.jpg" width="100%">
+</div>
+<div align="center" style="display:inline-block; width:47.5%;">
+  <img src="./results/output.jpg" width="100%">
+</div>
 <br><br>
 
 **More in [video](./results/video.gif).**
@@ -43,6 +49,7 @@ We use a modified `A-LOAM` to estimate the local poses and a UWB localization pa
 You can run the following commands to get optimal estimations of the UWB anchor's positions.
 ```
     roslaunch aloam_velodyne aloam_velodyne_HDL_32.launch
+    roslaunch uwb_localization_dwm localization.launch
     rosrun global_selfcalibration global_selfcalibration_node
 ```
 You can also run with a ROS bag. The bag data should includes the UWB distance measurements, the anchor's initial positions and the corresponding Lidar cloud points.
