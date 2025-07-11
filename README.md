@@ -4,10 +4,10 @@ A factor graph-based implementation for UWB anchor global calibration with LiDAR
 
 The system framework inclues two factor graphs, one for global fusion, and one for UWB anchor calibration. The detailed results can be found in [our paper](https://arxiv.org/abs/2503.22272).
 
-<img src="./results/uwb distance factor graph_all.jpg" width = 50% height = 50% div align=left />
+<img src="./results/uwb_distance_factor_graph_all.jpg" width = 50% height = 50% div align=left />
 <img src="./results/output.jpg" width = 47.5% height = 47.5% div align=center />
+<br><br>
 
-** **
 **More in [video](./results/video.gif).**
 <!-- [![Video](./results/output.jpg)](./results/video.gif) -->
 
@@ -24,13 +24,15 @@ Follow [PCL Installation](https://pointclouds.org/downloads/#linux), and [Eigen 
 
 
 ## 2. Build
-We use a modified `A-LOAM` to estimate the local poses. Clone this repository and the `A-modified-A-LOAM`, and catkin_make:
+We use a modified `A-LOAM` to estimate the local poses and a UWB localization pakcage `uwb_localization_dwm` included in `HR-robot-localization` to get the globl positions. Clone this repository, `A-modified-A-LOAM` and `HR-robot-localization`, and catkin_make:
 
 ```
     cd ~/catkin_ws/src
     git clone https://github.com/LiuxhRobotAI/Simultaneous_calibration_localization.git
 
     git clone https://github.com/LiuxhRobotAI/A-modified-A-LOAM.git
+
+    git clone https://github.com/LiuxhRobotAI/HR-robot-localization.git
 
     cd ../
     catkin_make
