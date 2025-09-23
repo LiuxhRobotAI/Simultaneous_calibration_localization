@@ -46,13 +46,24 @@ We use a modified `A-LOAM` to estimate the local poses and a UWB localization pa
 ## 3. UWB calibration
 You can run the following commands to get optimal estimations of the UWB anchor's positions.
 ```
-    roslaunch aloam_velodyne aloam_velodyne_HDL_32.launch
-    roslaunch uwb_localization_dwm localization.launch
     rosrun global_selfcalibration global_selfcalibration_node
 ```
-You can also run with a ROS bag. The bag data should includes the UWB distance measurements, the anchor's initial positions and the corresponding Lidar cloud points.
+
+You can also run with a ROS bag. The bag data should includes the UWB distance measurements, the UWB tag position, the anchor's initial positions and the corresponding LiDAR poses.
 ```
     rosbag play DATASET_FOLDER/LIDAR_UWB.bag
+```
+
+A useful dataset can be found in this website ([Hugging Face](https://huggingface.co/datasets/liuxh010/IndoorLocalization_UWB_Camera_LiDAR_IMU)).
+
+(Optional) To get the UWB tag position, one can run
+```
+    roslaunch uwb_localization_dwm localization.launch
+```
+
+(Optional) If you have LiDAR cloud points, to get the LiDAR poses
+```
+    roslaunch aloam_velodyne aloam_velodyne_HDL_32.launch
 ```
 
 ## 4. Acknowledgements
