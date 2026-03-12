@@ -74,11 +74,13 @@ For Licenses of the component codes, users are encouraged to read the material o
 
 We kindly recommend to cite [our paper](https://arxiv.org/abs/2503.22272) if you find this code is useful:
 
-```latex
-@article{liu2025robust,
+```
+@inproceedings{liu2025robust,
   title={Robust simultaneous UWB-anchor calibration and robot localization for emergency situations},
   author={Liu, Xinghua and Cao, Ming},
-  journal={arXiv preprint arXiv:2503.22272},
-  year={2025}
+  booktitle={2025 IEEE International Conference on Systems, Man, and Cybernetics (SMC)},
+  pages={4691--4697},
+  year={2025},
+  organization={IEEE}
 }
 ```
