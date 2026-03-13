@@ -28,7 +28,7 @@ Follow [PCL Installation](https://pointclouds.org/downloads/#linux), and [Eigen 
 
 
 ## 2. Build
-We use a modified `A-LOAM` to estimate the local poses and a UWB localization pakcage `uwb_localization_dwm` included in `HR-robot-localization` to get the globl positions. Clone this repository, `A-modified-A-LOAM` and `HR-robot-localization`, and catkin_make:
+We use a modified `A-LOAM` to estimate the local poses and a UWB localization pakcage `uwb_localization_dwm` included in `HR-robot-localization` to get the global positions. Clone this repository, `A-modified-A-LOAM` and `HR-robot-localization`, and catkin_make:
 
 ```
     cd ~/catkin_ws/src
